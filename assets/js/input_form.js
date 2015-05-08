@@ -58,7 +58,7 @@ OA.InputForm.prototype.init = function() {
         _this.submitForm();
     });
     this.buttons.error.click(function(event) {
-        _this.setState('collecting');
+        _this.submitForm();
     });
     this.buttons.success.click(function(event) {
         _this.setState('collecting');
@@ -123,18 +123,24 @@ OA.InputForm.prototype.onError = function(message) {
 OA.InputForm.prototype.setState = function(status) {
     var className = 'is-'+status;
     var _container = this.container;
+    var _this = this;
     $(this.formStatuses).each(function(i,val) {
         _container.removeClass("is-"+val);
     });
     this.container.addClass(className);
     if (status == 'collecting') {
-        this.input.attr('disabled',false);
         this.input.focus();
+    };
+
+    if (status == 'error') {
+        this.input.on('focus',function(event) {
+            _this.input.css('background-color',"#fff");
+            _this.input.off('focus');
+        });
+    } else {
+        _this.input.css('background-color','');
     }
 
-    if (status == 'loading' || status == 'error') {
-        this.input.attr('disabled',true);
-    }
 };
 
 OA.InputForm.prototype.sendMessageToParent = function(type,data) {
