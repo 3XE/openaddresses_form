@@ -58,11 +58,16 @@ OA.InputForm.prototype.init = function() {
         _this.submitForm();
     });
     this.buttons.error.click(function(event) {
-        _this.setState('collecting');
+        _this.submitForm();
     });
     this.buttons.success.click(function(event) {
         _this.setState('collecting');
     });
+    this.input.on('focus',function(event) {
+        console.log(_this.input);
+        $(_this.input).css('border: 1px solid !important');
+        //_this.input.style('background-color: #fff');
+    })
 };
 
 
@@ -128,13 +133,9 @@ OA.InputForm.prototype.setState = function(status) {
     });
     this.container.addClass(className);
     if (status == 'collecting') {
-        this.input.attr('disabled',false);
         this.input.focus();
     }
 
-    if (status == 'loading' || status == 'error') {
-        this.input.attr('disabled',true);
-    }
 };
 
 OA.InputForm.prototype.sendMessageToParent = function(type,data) {
