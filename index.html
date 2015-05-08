@@ -1,0 +1,110 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>Open Address Sorting Office</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css"/>
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <img src="assets/images/oa-logo-72.png" alt="Open Addresses logo"/>
+            <h1>Address Form as a Service</h1>
+
+            <p>This is an <em>address form as a service</em> widget from <a href="http://www.openaddressesuk.org">Open Addresses</a>.</p>
+
+            <p>The Open Addresses Sorting Office API will return well-formatted address data to your page, which you can handle as necessary. Your users can also submit their address to Open Addresses to improve accuracy.</p>
+
+            <h1>Demo</h1>
+            See the demo at <a href="/demo.html">http://embed.openaddressesuk.org/demo</a>.
+            
+            <h1 id="toc_1">Prequisites</h1>
+
+            <p>There are a few prerequisites to using this widget:</p>
+
+            <ul>
+                <li>Javascript is required</li>
+                <li>You will need to hande the data which is returned, using Javascript</li>
+            </ul>
+
+            <h1 id="toc_2">Usage</h1>
+
+            <h2 id="toc_3">Basic Usage</h2>
+
+            <p>Include this code on your page - either in your <code>&lt;head&gt;</code> or at the bottom of the <code>&lt;body&gt;</code>:</p>
+
+<pre><code>&lt;script type=&quot;text/javascript&quot; async defer&gt;
+    (function(config) {
+    var oa = document.createElement(&#39;script&#39;);
+    var config = (typeof(config) === &#39;undefined&#39; ? {} : config);
+    oa.src = &#39;//embed.openaddressesuk.org/embed.js&#39;;
+    oa.type = &#39;text/javascript&#39;;
+    oa.async = &#39;true&#39;;
+    oa.onload = oa.onreadystatechange = function() {
+    var rs = this.readyState;
+    if (rs &amp;&amp; rs != &#39;complete&#39; &amp;&amp; rs != &#39;loaded&#39;) return;
+    try { OpenAddresses.SortingOffice.embed(config); } catch (e) {}
+    };
+    var s = document.getElementsByTagName(&#39;script&#39;)[0];
+    s.parentNode.insertBefore(oa, s);
+    })({
+    //your configuration options go here
+    });
+    &lt;/script&gt;</code></pre>
+
+            <p>And this html where you want to put the form:</p>
+
+            <pre><code>&lt;div id=&quot;openaddresses-form&quot;&gt;&lt;/div&gt;</code></pre>
+
+            <h2 id="toc_4">Configuration Options</h2>
+
+<pre><code>{
+    onLoading: function(data) {
+    // Do something with data being sent to Sorting Office
+    },
+    onError: function(message) {
+    // Do something with the error message
+    },
+    onSuccess: function(data) {
+    // Do something with the data returned from Sorting Office
+    },
+    embedInto: document.getElementById(&#39;your-id&#39;)[0]
+    }</code></pre>
+
+            <h3 id="toc_5">Callback Configuration</h3>
+
+            <p>If you use the script block at the start of this document, you&#39;ll get a form on your page, but you aren&#39;t handling the response from OpenAddresses. There are 3 callbacks you can configure in the options.</p>
+
+            <h4 id="toc_6"><code>onLoading</code></h4>
+
+            <p>The onLoading callback is called as soon as the call to Open Addresses starts, and includes the data being sent to Sorting Office.</p>
+
+            <h4 id="toc_7"><code>onError</code></h4>
+
+            <p>The onError callback is called whenever an error state is encountered, either before the form is submitted (because validation failed) or after Sorting Office returns an error.</p>
+
+            <h4 id="toc_8"> <code>onSuccess</code></h4>
+
+            <p>onSuccess is called when there&#39;s some useful data returned from OpenAddresses. See the <a href="https://github.com/OpenAddressesUK/sorting_office/blob/master/README.md">Sorting Office Documentation</a> for more details of the format.</p>
+
+            <h3 id="toc_9">Changing where to embed the form</h3>
+
+            <p>By default, the widget expects an HTML element with an ID of <code>openaddresses-form</code> to embed the form into.</p>
+
+            <p>You can change this by using the <code>embedInto</code> configuration option. Be sure to pass a DOM element into this, not a class or ID reference.</p>
+
+            <h1 id="toc_10">Advanced Usage</h1>
+
+            <p>There isn&#39;t any advanced usage yet :-) It might be possible to add more configuration options to change colours and things.</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+
+</html>
