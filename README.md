@@ -18,7 +18,7 @@ Include this code on your page - either in your `<head>` or at the bottom of the
     (function(config) {
         var oa = document.createElement('script');
         var config = (typeof(config) === 'undefined' ? {} : config);
-        oa.src = 'https://21ae14e6.ngrok.com/embed.js';
+        oa.src = '//embed.openaddressesuk.org/embed.js';
         oa.type = 'text/javascript';
         oa.async = 'true';
         oa.onload = oa.onreadystatechange = function() {
@@ -57,9 +57,9 @@ And this html where you want to put the form:
 ```
 ### Callback Configuration
 If you use the script block at the start of this document, you'll get a form on your page, but you aren't handling the response from OpenAddresses. There are 3 callbacks you can configure in the options.
- 
+
 #### `onLoading`
-The onLoading callback is called as soon as the call to Open Addresses starts, and includes the data being sent to Sorting Office. 
+The onLoading callback is called as soon as the call to Open Addresses starts, and includes the data being sent to Sorting Office.
 
 #### `onError`
 The onError callback is called whenever an error state is encountered, either before the form is submitted (because validation failed) or after Sorting Office returns an error.
@@ -73,4 +73,4 @@ By default, the widget expects an HTML element with an ID of `openaddresses-form
 You can change this by using the `embedInto` configuration option. Be sure to pass a DOM element into this, not a class or ID reference.
 
 # Advanced Usage
-There isn't any advanced usage yet :-) It might be possible to add more configuration options to change colours and things. 
+There isn't any advanced usage yet :-) It might be possible to add more configuration options to change colours and things.

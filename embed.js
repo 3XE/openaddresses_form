@@ -15,7 +15,7 @@ Configuration options:
 if(!console.log) console.log = function(){};
 var OpenAddresses = {
     SortingOffice: {
-        embedUrl: "//openaddressesuk.github.io/openaddresses_form/embed.html",
+        embedUrl: "//embed.openaddressesuk.org/embed.html",
 
         // Configure the object
         configure: function(config) {
