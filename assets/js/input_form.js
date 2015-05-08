@@ -63,11 +63,6 @@ OA.InputForm.prototype.init = function() {
     this.buttons.success.click(function(event) {
         _this.setState('collecting');
     });
-    this.input.on('focus',function(event) {
-        console.log(_this.input);
-        $(_this.input).css('border: 1px solid !important');
-        //_this.input.style('background-color: #fff');
-    })
 };
 
 
@@ -128,12 +123,22 @@ OA.InputForm.prototype.onError = function(message) {
 OA.InputForm.prototype.setState = function(status) {
     var className = 'is-'+status;
     var _container = this.container;
+    var _this = this;
     $(this.formStatuses).each(function(i,val) {
         _container.removeClass("is-"+val);
     });
     this.container.addClass(className);
     if (status == 'collecting') {
         this.input.focus();
+    };
+
+    if (status == 'error') {
+        this.input.on('focus',function(event) {
+            _this.input.css('background-color',"#fff");
+            _this.input.off('focus');
+        });
+    } else {
+        _this.input.css('background-color','');
     }
 
 };
