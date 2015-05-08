@@ -15,7 +15,7 @@ Configuration options:
 if(!console.log) console.log = function(){};
 var OpenAddresses = {
     SortingOffice: {
-        embedUrl: "http://clients.errorstudio.co.uk/oa/embed.html",
+        embedUrl: "//openaddressesuk.github.io/openaddresses_form/embed.html",
 
         // Configure the object
         configure: function(config) {
@@ -103,10 +103,3 @@ var OpenAddresses = {
         }
     }
 };
-
-
-
-
-
-
-
