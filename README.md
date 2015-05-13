@@ -18,7 +18,7 @@ Include this code on your page - either in your `<head>` or at the bottom of the
     (function(config) {
         var oa = document.createElement('script');
         var config = (typeof(config) === 'undefined' ? {} : config);
-        oa.src = '//embed.openaddressesuk.org/embed.js';
+        oa.src = '//openaddressesuk.github.io/openaddresses_form/embed.js';
         oa.type = 'text/javascript';
         oa.async = 'true';
         oa.onload = oa.onreadystatechange = function() {
